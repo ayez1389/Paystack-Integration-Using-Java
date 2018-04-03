@@ -1,14 +1,14 @@
 <script>
             $(function(){
                 PaystackPop.setup({
-                    key: 'pk_test_a938df9700738fdf64d30f75d6278ed559f4ed1f', //Your public API Key
+                    key: 'public_key_goes_here', //Your public API Key
                     reference: 'TO090000090909', //Transaction refrence key
                     email: 'example@example.com', //Email adddress of the user 
                     amount: 1000, //Amount to be paid in Kobo
                     container: 'paystackEmbedContainer',
                     callback: function(response){ // Paystack response after payment
                         $.ajax({
-                            url: "membership-reg",
+                            url: "paystack_response_servlet", // Create a servlet to recieve this request
                             data: {paymentResponse: response.reference, regEmail: email, cash: amount, transId: transId},
                             type: 'GET',
                             contentType: "application/json",
